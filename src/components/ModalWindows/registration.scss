@@ -1,0 +1,29 @@
+.registration-form{
+    position:fixed;
+    top:0 ;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:#00000050;
+    color: #ccc;
+
+}
+.registration-form-wrap{
+    width: 50vw;
+    border: 1px solid #000;
+    margin: 0 auto;
+    padding: 15px;
+    background-color:rgb(2, 2, 2);
+    border-radius: 5px;
+}
+.button-back{
+    position: fixed;
+    top: 65px;
+    left: 10px;
+}
