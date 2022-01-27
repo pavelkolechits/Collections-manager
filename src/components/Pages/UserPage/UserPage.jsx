@@ -37,7 +37,6 @@ export const UserPage = () => {
           state.user.collections.map((i) => (
             <CollectionItem
             collectionId={i.id}
-
             key={i.collectionId}
               description={i.description}
               collectionName={i.collectionName}

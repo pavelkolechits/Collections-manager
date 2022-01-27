@@ -23,6 +23,8 @@ export const HomePage = () => {
           .flat(1)
           .map((i) => (
             <CollectionItem
+            key={i.id}
+            collectionId={i.id}
               description={i.description}
               collectionName={i.collectionName}
               img={i.img}
