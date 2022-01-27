@@ -18,7 +18,7 @@ function* getUser(action) {
       _id: action.id,
     });
     const result = yield call(() =>
-      fetch("https://shielded-shore-81654.herokuapp.com/api/get-user", {
+      fetch("https://shielded-shore-81654.herokuapp.com/api/get_user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -88,7 +88,7 @@ function* sendItem(action) {
     });
 
     const result = yield call(() =>
-      fetch("https://shielded-shore-81654.herokuapp.com/api/data-item", {
+      fetch("https://shielded-shore-81654.herokuapp.com/api/data_item", {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -117,7 +117,7 @@ function* createCollection(action) {
     console.log(body);
 
     const result = yield call(() =>
-      fetch("https://shielded-shore-81654.herokuapp.com/api/create-collection", {
+      fetch("https://shielded-shore-81654.herokuapp.com/api/create_collection", {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
