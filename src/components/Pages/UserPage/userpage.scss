@@ -1,0 +1,37 @@
+.userpage-wrap {
+    width: 100vw;
+    height: 93vh;
+    background-color: rgba(240, 248, 255, 0.452);
+    position: absolute;
+    top:55px;
+
+    
+
+}
+.optionsbar-wrap{
+    position: fixed;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    border: 1px solid #3d6035;
+    padding: 5px;
+    background-color:#212529;
+    display: flex;
+    align-items:center;
+    justify-content: start;
+    flex-direction: column;
+}
+.dropdown-button{
+    margin: 10px 0;
+}
+.create-collection-button{
+    margin: 10px 0;
+}
+.list-collection-item{
+    margin-left: 200px;
+    overflow-y: scroll;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+}

@@ -1,7 +1,7 @@
 import { mainReducer } from './reducers/mainReducer';   
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { getNewsWatcher } from './Saga/getUsers';
+import { watcher } from './Saga/mainUsers';
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -11,4 +11,4 @@ export const store = createStore(combineReducers({ mainReducer }), composeEnhanc
 
 
 
-sagaMiddleware.run(getNewsWatcher)
+sagaMiddleware.run(watcher)

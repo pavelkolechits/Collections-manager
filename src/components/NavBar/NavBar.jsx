@@ -11,16 +11,23 @@ import { useNavigate } from "react-router-dom";
 import './navbar.scss';
 import { useDispatch } from "react-redux";
 import { ACTIONS } from "../../redux/constants";
+import { useEffect } from "react";
 
 
 export const NavBar = () => {
-  const dispatch = useDispatch()
-  const h = () => {
-    dispatch({type: ACTIONS.GET_USERS})
-  }
   const navigate = useNavigate();
+  const logout = () => {
+    dispatch({type: ACTIONS.LOGOUT})
+    navigate('/home-page')
+  }
+
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    navigate('/home-page')
+  },[])
   return (
-    <Navbar variant="dark" bg="dark" expand="lg">
+    <Navbar style={{position:'fixed', top:'0', left:'0', zIndex:'1000', width: '100vw'}} variant="dark" bg="dark" expand="lg">
       <Container fluid>
         <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -30,7 +37,7 @@ export const NavBar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Button onClick={h} className="nav-button" variant="outline-success">Home</Button>
+            <Button onClick={() => navigate("/home-page")} className="nav-button" variant="outline-success">Home</Button>
             <Button
             className="nav-button"
               onClick={() => navigate("/login")}
@@ -38,8 +45,15 @@ export const NavBar = () => {
             >
               Log In
             </Button>
+            <Button
+            className="nav-button"
+              onClick={logout}
+              variant="outline-success"
+            >
+              Log Out
+            </Button>
             <Button className="nav-button" onClick={() => navigate("/")} variant="outline-success">
-              Home
+              Admin
             </Button>
             <Button className="nav-button"
               onClick={() => navigate("/registration")}

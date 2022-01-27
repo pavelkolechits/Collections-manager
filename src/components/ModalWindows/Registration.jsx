@@ -1,17 +1,17 @@
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "./registration.scss";
-import { useDispatch } from "react-redux";
+import "./modalwindows.scss";
+import { useDispatch , useSelector} from "react-redux";
 import { ACTIONS } from "../../redux/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 export const Registration = ({}) => {
-
+  const state = useSelector(i => i.mainReducer)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 
 
@@ -28,6 +28,11 @@ export const Registration = ({}) => {
   const submitData = () => {
     dispatch({type: ACTIONS.REGISTRATION, name, email, password})
   }
+  useEffect(() => {
+    if (state.state?.user){
+      navigate('/user-page')
+    }
+  },[state])
 
   return (
     <Form variant="dark">
@@ -57,8 +62,8 @@ export const RegistrationModal = ({}) => {
         <Registration />
       </div>
       <Button
-        onClick={() => navigate("/")}
-        variant="dark"
+        onClick={() => navigate("/home-page")}
+        variant="white"
         className="button-back"
       >
         &larr; Back
