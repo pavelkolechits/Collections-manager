@@ -23,6 +23,7 @@ export const HomePage = () => {
           .flat(1)
           .map((i) => (
             <CollectionItem
+            disabled={true}
             key={i.id}
             collectionId={i.id}
               description={i.description}

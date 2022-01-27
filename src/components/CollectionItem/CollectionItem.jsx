@@ -9,6 +9,7 @@ export const CollectionItem = ({
   description,
   collectionName,
   collectionId,
+  disabled
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ export const CollectionItem = ({
       <Card.Body>
         <Card.Title>Name: {collectionName}</Card.Title>
         <Card.Text>Description: {description}</Card.Text>
-        <Button onClick={openCollection} variant="dark">
+        <Button disabled={disabled} onClick={openCollection} variant="dark">
           Open
         </Button>
       </Card.Body>
