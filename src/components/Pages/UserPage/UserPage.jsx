@@ -8,25 +8,9 @@ import { CollectionItem } from "../../CollectionItem/CollectionItem";
 import "./userpage.scss";
 import { OptionsBar } from "./OptionsBar";
 export const UserPage = () => {
-  const navigate = useNavigate();
-  const state = useSelector((i) => i.mainReducer.state);
-  const dispatch = useDispatch();
-  const handleInput = (event) => {
-    const files = Array.from(event.target.files);
-    files.forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        console.log(event.target.result);
-        dispatch({
-          type: ACTIONS.SEND_ITEM,
-          item: event.target.result,
-          id: state.user._id,
-        });
-      };
-      reader.readAsDataURL(file);
-    });
-  };
 
+  const state = useSelector((i) => i.mainReducer.state);
+ 
   return (
     <div className="userpage-wrap">
       <OptionsBar />
@@ -37,7 +21,7 @@ export const UserPage = () => {
           state.user.collections.map((i) => (
             <CollectionItem
             collectionId={i.id}
-            key={i.collectionId}
+            key={i.id}
               description={i.description}
               collectionName={i.collectionName}
               img={i.img}
@@ -45,7 +29,6 @@ export const UserPage = () => {
           ))
         )}
       </div>
-      {/* <input multiple onChange={handleInput} type="file" /> */}
     </div>
   );
 };

@@ -6,3 +6,8 @@
     margin: 1rem;
     border: 2px solid #000 ;
 }
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

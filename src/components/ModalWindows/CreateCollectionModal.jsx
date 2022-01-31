@@ -22,10 +22,10 @@ export const CreateCollection = ({ img }) => {
   };
   const handleInputImg = (event) => {
     setDataImg(event.target.value);
-    console.log(event);
+    
   };
   const state = useSelector((i) => i.mainReducer.state);
- console.log(state.user._id)
+ const navigate = useNavigate()
   const dispatch = useDispatch();
   const creteCollection = () => {
     dispatch({
@@ -33,8 +33,9 @@ export const CreateCollection = ({ img }) => {
       collectionName,
       description,
       dataImg,
-      id: state.user._id
+      id: state.user._id,
     });
+    navigate("/user-page")
   };
 
   return (
@@ -86,24 +87,7 @@ export const CreateCollectionModal = () => {
           <Carousel.Item>
             <Carousel.Caption style={{ cursor: "default" }}>
               <div style={{ background: "#00000090" }}>
-                <img
-                  style={{
-                    position: "fixed",
-                    width: "200px",
-                    height: "100px",
-                    top: "50px",
-                    left: "0",
-                    right: "0",
-                    margin: "auto",
-                    cursor: "grab",
-                  }}
-                  src={books}
-                  alt=""
-                />
-                <h5>First slide label</h5>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
+                <img className="img-for-drag" src={books} alt="" />
               </div>
             </Carousel.Caption>
             <img
@@ -115,24 +99,7 @@ export const CreateCollectionModal = () => {
           <Carousel.Item>
             <Carousel.Caption style={{ cursor: "default" }}>
               <div style={{ background: "#00000090" }}>
-                <img
-                  style={{
-                    position: "fixed",
-                    width: "200px",
-                    height: "100px",
-                    top: "50px",
-                    left: "0",
-                    right: "0",
-                    margin: "auto",
-                    cursor: "grab",
-                  }}
-                  src={foto}
-                  alt=""
-                />
-                <h5>First slide label</h5>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
+                <img className="img-for-drag" src={foto} alt="" />
               </div>
             </Carousel.Caption>
             <img
@@ -144,24 +111,7 @@ export const CreateCollectionModal = () => {
           <Carousel.Item>
             <Carousel.Caption style={{ cursor: "default" }}>
               <div style={{ background: "#00000090" }}>
-                <img
-                  style={{
-                    position: "fixed",
-                    width: "200px",
-                    height: "100px",
-                    top: "50px",
-                    left: "0",
-                    right: "0",
-                    margin: "auto",
-                    cursor: "grab",
-                  }}
-                  src={Video}
-                  alt=""
-                />
-                <h5>First slide label</h5>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
+                <img className="img-for-drag" src={Video} alt="" />
               </div>
             </Carousel.Caption>
             <img
@@ -173,24 +123,7 @@ export const CreateCollectionModal = () => {
           <Carousel.Item>
             <Carousel.Caption style={{ cursor: "default" }}>
               <div style={{ background: "#00000090" }}>
-                <img
-                  style={{
-                    position: "fixed",
-                    width: "200px",
-                    height: "100px",
-                    top: "50px",
-                    left: "0",
-                    right: "0",
-                    margin: "auto",
-                    cursor: "grab",
-                  }}
-                  src={unnamed}
-                  alt=""
-                />
-                <h5>First slide label</h5>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
+                <img className="img-for-drag" src={unnamed} alt="" />
               </div>
             </Carousel.Caption>
             <img
@@ -201,12 +134,14 @@ export const CreateCollectionModal = () => {
           </Carousel.Item>
         </Carousel>
       </div>
-      <h2 style={{ position: "absolute", zIndex: "2", top: "0" }}>
+      <h3 style={{ position: "absolute", zIndex: "2", top: "50px" }}>
         drag image from here
-      </h2>
+      </h3>
       <CreateCollection />
-
-      <CloseButton onClick={() => navigate("/user-page")} className="close-button-back" />
+      <CloseButton
+        onClick={() => navigate("/user-page")}
+        className="close-button-back"
+      />
     </div>
   );
 };

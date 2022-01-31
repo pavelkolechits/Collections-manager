@@ -5,7 +5,7 @@ function* getAllUsers() {
   try {
     const result = yield call(() => fetch("https://shielded-shore-81654.herokuapp.com/api/users"));
     const request = yield result.json();
-    console.log(request);
+
     yield put({ type: ACTIONS.GET_ALL_USERS_REQUEST_SUCCESS, request });
   } catch (e) {
     console.log(e);
@@ -13,7 +13,6 @@ function* getAllUsers() {
 }
 function* getUser(action) {
   try {
-    console.log("works", action);
     const body = JSON.stringify({
       _id: action.id,
     });
@@ -27,7 +26,7 @@ function* getUser(action) {
       })
     );
     const request = yield result.json();
- 
+
     yield put({ type: ACTIONS.GET_USER_REQUEST_SUCCESS, request });
   } catch (e) {
     console.log(e);
@@ -83,38 +82,42 @@ function* logIn(action) {
 function* sendItem(action) {
   try {
     const body = JSON.stringify({
-      item: action.item,
-      _id: action.id,
+      collectionId: action.item.collectionId,
+      item: action.item.item,
+      _id: action.item.id,
+      itemId: getID(),
     });
 
     const result = yield call(() =>
-      fetch("https://shielded-shore-81654.herokuapp.com/api/data_item", {
+      fetch("https://shielded-shore-81654.herokuapp.com/api/data_item/", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json;charset=utf-8",
+          "Content-Type": "application/json",
         },
         body: body,
       })
     );
     const request = yield result.json();
-    console.log(request);
+
+    yield put({ type: ACTIONS.GET_USER, id: action.item.id });
   } catch (e) {
     console.log(e);
   }
 }
+
+function getID() {
+  return "_" + Math.random().toString(36).substr(2, 9);
+}
+
 function* createCollection(action) {
-  function getID() {
-    return "_" + Math.random().toString(36).substr(2, 9);
-  }
   try {
     const body = JSON.stringify({
       collectionName: action.collectionName,
       description: action.description,
       _id: action.id,
       img: action.dataImg,
-      collectionId: getID()
+      collectionId: getID(),
     });
-    console.log(body);
 
     const result = yield call(() =>
       fetch("https://shielded-shore-81654.herokuapp.com/api/create_collection", {
@@ -126,8 +129,7 @@ function* createCollection(action) {
       })
     );
     const request = yield result.json();
-    console.log(request);
-    console.log(action, "create collection");
+
     yield put({ type: ACTIONS.GET_USER, id: action.id });
   } catch (e) {
     console.log(e);

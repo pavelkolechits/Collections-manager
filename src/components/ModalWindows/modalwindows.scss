@@ -102,3 +102,13 @@
     background-color:#000000;
     border-radius:5px;
 }
+.img-for-drag{
+    position: fixed;
+    width: 200px;
+    height: 100px;
+    top: 80px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    cursor: grab;
+}
