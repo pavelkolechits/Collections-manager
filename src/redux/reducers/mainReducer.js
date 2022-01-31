@@ -26,14 +26,12 @@ export function mainReducer(state = defState, action) {
           state: { user: action.request },
           collection: collection,
         };
-      }else{
+      } else {
         return {
           ...state,
           state: { user: action.request },
         };
       }
-
-     
     }
     case ACTIONS.LOGOUT: {
       return { users: state.users };
